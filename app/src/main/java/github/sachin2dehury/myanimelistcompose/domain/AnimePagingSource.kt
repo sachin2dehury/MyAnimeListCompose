@@ -1,4 +1,4 @@
-package github.sachin2dehury.myanimelistcompose.presentation.paginated
+package github.sachin2dehury.myanimelistcompose.domain
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
