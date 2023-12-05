@@ -12,7 +12,10 @@ interface AnimeService {
     suspend fun getPaginatedList(
         @Query("page") page: Int,
         @Query("limit") limit: Int,
-        @Query("q") query: String?
+        @Query("q") query: String?,
+        @Query("order_by") sortingBasis: String?,
+        @Query("type") type: String?,
+        @Query("rating") rating: String?,
     ): PaginatedRemoteModel
 
     @GET("v4/anime/{id}/full")
