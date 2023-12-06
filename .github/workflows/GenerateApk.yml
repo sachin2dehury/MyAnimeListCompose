@@ -21,7 +21,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Set up Gradle with Cache
-        uses: gradle/gradle-build-action@v3
+        uses: gradle/gradle-build-action@v2
 
       - name: Generate Release Apk
         run: ./gradlew assembleRelease --scan
