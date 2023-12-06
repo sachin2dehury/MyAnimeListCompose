@@ -9,6 +9,6 @@ interface PaginatedRepository {
         query: String?,
         sortingBasis: String?,
         type: String?,
-        rating: String?
+        rating: String?,
     ): PaginatedRemoteModel
 }

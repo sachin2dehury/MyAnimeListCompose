@@ -15,8 +15,8 @@ class DetailUseCaseImpl(private val repository: DetailRepository) : DetailUseCas
             } else {
                 emit(
                     ResultType.Error(
-                        response.messages?.values?.joinToString() ?: "Something went wrong!!"
-                    )
+                        response.messages?.values?.joinToString() ?: "Something went wrong!!",
+                    ),
                 )
             }
         } catch (e: Exception) {

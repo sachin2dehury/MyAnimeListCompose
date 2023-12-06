@@ -13,20 +13,21 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import github.sachin2dehury.myanimelistcompose.presentation.paginated.model.FilterUiModel
 import github.sachin2dehury.myanimelistcompose.presentation.paginated.model.PaginatedUiState
 
 @Composable
 fun FilterSection(
     modifier: Modifier = Modifier,
     state: PaginatedUiState,
-    viewModel: PaginatedViewModel
+    viewModel: PaginatedViewModel,
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
             .horizontalScroll(rememberScrollState()),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         var dialogType by remember {
             mutableStateOf<String?>(null)
@@ -50,27 +51,29 @@ fun FilterSection(
                 "Rating" -> state.rating to FilterUiModel.RATING
                 else -> state.sortingBasis to FilterUiModel.SORTING_BASIS
             }
-            FilterDialog(selected = selected,
+            FilterDialog(
+                selected = selected,
                 map = map,
-                onDismissCallback = { dialogType = null }) {
+                onDismissCallback = { dialogType = null },
+            ) {
                 dialogType = null
                 when (map) {
                     FilterUiModel.SORTING_BASIS -> viewModel.updateState(
                         viewModel.state.value.copy(
-                            sortingBasis = it
-                        )
+                            sortingBasis = it,
+                        ),
                     )
 
                     FilterUiModel.TYPE -> viewModel.updateState(
                         viewModel.state.value.copy(
-                            type = it
-                        )
+                            type = it,
+                        ),
                     )
 
                     FilterUiModel.RATING -> viewModel.updateState(
                         viewModel.state.value.copy(
-                            rating = it
-                        )
+                            rating = it,
+                        ),
                     )
                 }
             }

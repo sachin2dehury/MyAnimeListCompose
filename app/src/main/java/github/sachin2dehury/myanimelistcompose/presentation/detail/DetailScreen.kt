@@ -14,7 +14,7 @@ import github.sachin2dehury.myanimelistcompose.presentation.ErrorSection
 fun DetailScreen(
     modifier: Modifier = Modifier,
     id: Int,
-    viewModel: DetailViewModel = hiltViewModel()
+    viewModel: DetailViewModel = hiltViewModel(),
 ) {
     Box(modifier = modifier) {
         LaunchedEffect(key1 = Unit, block = {
@@ -23,7 +23,7 @@ fun DetailScreen(
         val state = viewModel.state.collectAsState().value
         if (state.isLoading) {
             LinearProgressIndicator(
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
             )
         }
         if (!state.error.isNullOrEmpty()) {
@@ -36,4 +36,3 @@ fun DetailScreen(
         }
     }
 }
-

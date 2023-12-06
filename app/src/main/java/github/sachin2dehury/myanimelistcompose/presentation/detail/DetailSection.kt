@@ -53,7 +53,7 @@ fun DetailSection(modifier: Modifier = Modifier, data: DetailModel) {
             .background(mutedBgColor)
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(12.dp)
+        verticalArrangement = Arrangement.spacedBy(12.dp),
 
     ) {
         AsyncImage(
@@ -71,13 +71,13 @@ fun DetailSection(modifier: Modifier = Modifier, data: DetailModel) {
                 dominantTextColor = Color(palette.dominantSwatch?.bodyTextColor.orZero())
                 mutedTextColor = Color(palette.mutedSwatch?.bodyTextColor.orZero())
             },
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Crop,
         )
         Text(
             text = data.titleEnglish.ifEmpty { data.title },
             style = MaterialTheme.typography.titleLarge,
             color = mutedTextColor,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
         )
 
         Text(
@@ -86,40 +86,40 @@ fun DetailSection(modifier: Modifier = Modifier, data: DetailModel) {
             text = data.titleJapanese,
             style = MaterialTheme.typography.titleLarge,
             color = dominantTextColor,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
         )
 
         Row(
             modifier = Modifier
                 .fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Text(
                 text = "Rating: ${data.score}",
                 style = MaterialTheme.typography.labelMedium,
-                color = mutedTextColor
+                color = mutedTextColor,
             )
             Text(
                 text = "Rank: ${data.rank}",
                 style = MaterialTheme.typography.labelMedium,
-                color = mutedTextColor
+                color = mutedTextColor,
             )
         }
 
         Row(
             modifier = Modifier
                 .fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Text(
                 text = "Episodes: ${data.episodes}",
                 style = MaterialTheme.typography.labelMedium,
-                color = mutedTextColor
+                color = mutedTextColor,
             )
             Text(
                 text = data.duration,
                 style = MaterialTheme.typography.labelMedium,
-                color = mutedTextColor
+                color = mutedTextColor,
             )
         }
 
@@ -136,42 +136,42 @@ fun DetailSection(modifier: Modifier = Modifier, data: DetailModel) {
             modifier = Modifier.fillMaxWidth(),
             text = "Genres: ${data.genres}",
             style = MaterialTheme.typography.labelMedium,
-            color = mutedTextColor
+            color = mutedTextColor,
         )
 
         Text(
             modifier = Modifier.fillMaxWidth(),
             text = "Rating: ${data.rating}",
             style = MaterialTheme.typography.labelMedium,
-            color = mutedTextColor
+            color = mutedTextColor,
         )
 
         Text(
             modifier = Modifier.fillMaxWidth(),
             text = "Background: \n\t\t${data.background}",
             style = MaterialTheme.typography.labelLarge,
-            color = mutedTextColor
+            color = mutedTextColor,
         )
 
         Text(
             modifier = Modifier.fillMaxWidth(),
             text = "Synopsis: \n\t\t${data.synopsis}",
             style = MaterialTheme.typography.labelLarge,
-            color = mutedTextColor
+            color = mutedTextColor,
         )
 
         Text(
             modifier = Modifier.fillMaxWidth(),
             text = "Opening: \n${data.openingTheme.joinToString("\n")}",
             style = MaterialTheme.typography.labelMedium,
-            color = mutedTextColor
+            color = mutedTextColor,
         )
 
         Text(
             modifier = Modifier.fillMaxWidth(),
             text = "Ending: \n${data.endingTheme.joinToString("\n")}",
             style = MaterialTheme.typography.labelMedium,
-            color = mutedTextColor
+            color = mutedTextColor,
         )
     }
 }

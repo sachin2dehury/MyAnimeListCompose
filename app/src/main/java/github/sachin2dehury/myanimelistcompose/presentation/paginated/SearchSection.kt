@@ -24,7 +24,7 @@ fun SearchSection(
     modifier: Modifier = Modifier,
     query: String,
     viewModel: PaginatedViewModel,
-    scrollBehavior: TopAppBarScrollBehavior
+    scrollBehavior: TopAppBarScrollBehavior,
 ) {
     CenterAlignedTopAppBar(
         modifier = modifier
@@ -51,7 +51,7 @@ fun SearchSection(
                 modifier = Modifier
                     .padding(horizontal = 16.dp),
                 imageVector = Icons.Filled.Search,
-                contentDescription = "Search"
+                contentDescription = "Search",
             )
         },
         actions = {
@@ -63,7 +63,7 @@ fun SearchSection(
                             viewModel.updateState(viewModel.state.value.copy(query = null))
                         },
                     imageVector = Icons.Filled.Clear,
-                    contentDescription = "Clear"
+                    contentDescription = "Clear",
                 )
             }
         },

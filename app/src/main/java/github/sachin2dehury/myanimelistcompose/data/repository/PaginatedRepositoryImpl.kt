@@ -10,6 +10,6 @@ class PaginatedRepositoryImpl(private val service: AnimeService) : PaginatedRepo
         query: String?,
         sortingBasis: String?,
         type: String?,
-        rating: String?
+        rating: String?,
     ) = service.getPaginatedList(page, limit, query, sortingBasis, type, rating)
 }

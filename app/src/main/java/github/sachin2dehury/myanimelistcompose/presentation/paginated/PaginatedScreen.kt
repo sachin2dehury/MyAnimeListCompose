@@ -22,7 +22,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
-import github.sachin2dehury.myanimelistcompose.domain.orZero
 import github.sachin2dehury.myanimelistcompose.presentation.ErrorSection
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")

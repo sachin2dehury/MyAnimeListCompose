@@ -1,6 +1,5 @@
 package github.sachin2dehury.myanimelistcompose.data.model
 
-
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -11,7 +10,7 @@ data class PaginatedRemoteModel(
     val error: String? = null,
     val messages: Map<String, List<String?>?>? = null,
     val status: Int? = null,
-    val type: String? = null
+    val type: String? = null,
 ) {
     @JsonClass(generateAdapter = true)
     data class Data(
@@ -56,32 +55,32 @@ data class PaginatedRemoteModel(
         val trailer: Trailer? = null,
         val type: String? = null,
         val url: String? = null,
-        val year: Int? = null
+        val year: Int? = null,
     ) {
         @JsonClass(generateAdapter = true)
         data class Aired(
             val from: String? = null,
             val prop: Prop? = null,
-            val to: String? = null
+            val to: String? = null,
         ) {
             @JsonClass(generateAdapter = true)
             data class Prop(
                 val from: From? = null,
                 val string: String? = null,
-                val to: To? = null
+                val to: To? = null,
             ) {
                 @JsonClass(generateAdapter = true)
                 data class From(
                     val day: Int? = null,
                     val month: Int? = null,
-                    val year: Int? = null
+                    val year: Int? = null,
                 )
 
                 @JsonClass(generateAdapter = true)
                 data class To(
                     val day: Int? = null,
                     val month: Int? = null,
-                    val year: Int? = null
+                    val year: Int? = null,
                 )
             }
         }
@@ -91,7 +90,7 @@ data class PaginatedRemoteModel(
             val day: String? = null,
             val string: String? = null,
             val time: String? = null,
-            val timezone: String? = null
+            val timezone: String? = null,
         )
 
         @JsonClass(generateAdapter = true)
@@ -100,7 +99,7 @@ data class PaginatedRemoteModel(
             val malId: Int? = null,
             val name: String? = null,
             val type: String? = null,
-            val url: String? = null
+            val url: String? = null,
         )
 
         @JsonClass(generateAdapter = true)
@@ -109,7 +108,7 @@ data class PaginatedRemoteModel(
             val malId: Int? = null,
             val name: String? = null,
             val type: String? = null,
-            val url: String? = null
+            val url: String? = null,
         )
 
         @JsonClass(generateAdapter = true)
@@ -118,13 +117,13 @@ data class PaginatedRemoteModel(
             val malId: Int? = null,
             val name: String? = null,
             val type: String? = null,
-            val url: String? = null
+            val url: String? = null,
         )
 
         @JsonClass(generateAdapter = true)
         data class Images(
             val jpg: Jpg? = null,
-            val webp: Webp? = null
+            val webp: Webp? = null,
         ) {
             @JsonClass(generateAdapter = true)
             data class Jpg(
@@ -133,7 +132,7 @@ data class PaginatedRemoteModel(
                 @Json(name = "large_image_url")
                 val largeImageUrl: String? = null,
                 @Json(name = "small_image_url")
-                val smallImageUrl: String? = null
+                val smallImageUrl: String? = null,
             )
 
             @JsonClass(generateAdapter = true)
@@ -143,7 +142,7 @@ data class PaginatedRemoteModel(
                 @Json(name = "large_image_url")
                 val largeImageUrl: String? = null,
                 @Json(name = "small_image_url")
-                val smallImageUrl: String? = null
+                val smallImageUrl: String? = null,
             )
         }
 
@@ -153,7 +152,7 @@ data class PaginatedRemoteModel(
             val malId: Int? = null,
             val name: String? = null,
             val type: String? = null,
-            val url: String? = null
+            val url: String? = null,
         )
 
         @JsonClass(generateAdapter = true)
@@ -162,7 +161,7 @@ data class PaginatedRemoteModel(
             val malId: Int? = null,
             val name: String? = null,
             val type: String? = null,
-            val url: String? = null
+            val url: String? = null,
         )
 
         @JsonClass(generateAdapter = true)
@@ -171,7 +170,7 @@ data class PaginatedRemoteModel(
             val malId: Int? = null,
             val name: String? = null,
             val type: String? = null,
-            val url: String? = null
+            val url: String? = null,
         )
 
         @JsonClass(generateAdapter = true)
@@ -180,13 +179,13 @@ data class PaginatedRemoteModel(
             val malId: Int? = null,
             val name: String? = null,
             val type: String? = null,
-            val url: String? = null
+            val url: String? = null,
         )
 
         @JsonClass(generateAdapter = true)
         data class Title(
             val title: String? = null,
-            val type: String? = null
+            val type: String? = null,
         )
 
         @JsonClass(generateAdapter = true)
@@ -195,7 +194,7 @@ data class PaginatedRemoteModel(
             val embedUrl: String? = null,
             val url: String? = null,
             @Json(name = "youtube_id")
-            val youtubeId: String? = null
+            val youtubeId: String? = null,
         )
     }
 
@@ -205,14 +204,14 @@ data class PaginatedRemoteModel(
         val hasNextPage: Boolean? = null,
         val items: Items? = null,
         @Json(name = "last_visible_page")
-        val lastVisiblePage: Int? = null
+        val lastVisiblePage: Int? = null,
     ) {
         @JsonClass(generateAdapter = true)
         data class Items(
             val count: Int? = null,
             @Json(name = "per_page")
             val perPage: Int? = null,
-            val total: Int? = null
+            val total: Int? = null,
         )
     }
 }

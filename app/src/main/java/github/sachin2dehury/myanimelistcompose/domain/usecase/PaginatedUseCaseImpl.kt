@@ -13,7 +13,7 @@ class PaginatedUseCaseImpl(private val repository: PaginatedRepository) : Pagina
         query: String?,
         sortingBasis: String?,
         type: String?,
-        rating: String?
+        rating: String?,
     ): PagingSource.LoadResult<Int, PaginatedModel> {
         return try {
             val response =
@@ -21,13 +21,15 @@ class PaginatedUseCaseImpl(private val repository: PaginatedRepository) : Pagina
             if (response.error.isNullOrEmpty() && !response.data.isNullOrEmpty()) {
                 val nextPage = if (response.pagination?.hasNextPage == true) page + 1 else null
                 PagingSource.LoadResult.Page(
-                    response.data.filterNotNull().map { it.toPaginatedModel() }, null, nextPage
+                    response.data.filterNotNull().map { it.toPaginatedModel() },
+                    null,
+                    nextPage,
                 )
             } else {
                 PagingSource.LoadResult.Error(
                     Throwable(
-                        response.messages?.values?.joinToString() ?: "Something went wrong!!"
-                    )
+                        response.messages?.values?.joinToString() ?: "Something went wrong!!",
+                    ),
                 )
             }
         } catch (e: Exception) {

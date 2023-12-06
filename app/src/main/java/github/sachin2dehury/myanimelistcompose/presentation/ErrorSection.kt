@@ -42,7 +42,8 @@ fun ErrorSection(
                 .align(Alignment.CenterHorizontally),
             onClick = {
                 callback.invoke()
-            }) {
+            },
+        ) {
             Text(
                 text = "Try again",
                 style = MaterialTheme.typography.labelMedium,

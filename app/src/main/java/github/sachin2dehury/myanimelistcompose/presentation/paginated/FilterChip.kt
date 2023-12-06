@@ -20,7 +20,7 @@ fun FilterChip(modifier: Modifier = Modifier, title: String, callback: () -> Uni
         colors = ButtonDefaults.outlinedButtonColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant,
         ),
-        onClick = callback
+        onClick = callback,
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -28,7 +28,7 @@ fun FilterChip(modifier: Modifier = Modifier, title: String, callback: () -> Uni
             Text(text = title, style = MaterialTheme.typography.titleMedium)
             Image(
                 imageVector = Icons.Filled.KeyboardArrowDown,
-                contentDescription = "Down"
+                contentDescription = "Down",
             )
         }
     }

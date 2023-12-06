@@ -14,7 +14,7 @@ fun PaginatedRemoteModel.Data.toPaginatedModel() = PaginatedModel(
     score.orZero(),
     title.orEmpty(),
     titleEnglish.orEmpty(),
-    titleJapanese.orEmpty()
+    titleJapanese.orEmpty(),
 )
 
 fun DetailRemoteModel.Data.toDetailModel() = DetailModel(
@@ -33,7 +33,7 @@ fun DetailRemoteModel.Data.toDetailModel() = DetailModel(
     theme?.endings.orEmpty().filterNotNull(),
     title.orEmpty(),
     titleEnglish.orEmpty(),
-    titleJapanese.orEmpty()
+    titleJapanese.orEmpty(),
 )
 
 fun Int?.orZero() = this ?: 0

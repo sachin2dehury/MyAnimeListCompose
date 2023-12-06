@@ -1,6 +1,5 @@
 package github.sachin2dehury.myanimelistcompose.data.model
 
-
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -10,7 +9,7 @@ data class DetailRemoteModel(
     val error: String? = null,
     val messages: Map<String, List<String?>?>? = null,
     val status: Int? = null,
-    val type: String? = null
+    val type: String? = null,
 ) {
     @JsonClass(generateAdapter = true)
     data class Data(
@@ -59,32 +58,32 @@ data class DetailRemoteModel(
         val trailer: Trailer? = null,
         val type: String? = null,
         val url: String? = null,
-        val year: Int? = null
+        val year: Int? = null,
     ) {
         @JsonClass(generateAdapter = true)
         data class Aired(
             val from: String? = null,
             val prop: Prop? = null,
-            val to: String? = null
+            val to: String? = null,
         ) {
             @JsonClass(generateAdapter = true)
             data class Prop(
                 val from: From? = null,
                 val string: String? = null,
-                val to: To? = null
+                val to: To? = null,
             ) {
                 @JsonClass(generateAdapter = true)
                 data class From(
                     val day: Int? = null,
                     val month: Int? = null,
-                    val year: Int? = null
+                    val year: Int? = null,
                 )
 
                 @JsonClass(generateAdapter = true)
                 data class To(
                     val day: Int? = null,
                     val month: Int? = null,
-                    val year: Int? = null
+                    val year: Int? = null,
                 )
             }
         }
@@ -94,7 +93,7 @@ data class DetailRemoteModel(
             val day: String? = null,
             val string: String? = null,
             val time: String? = null,
-            val timezone: String? = null
+            val timezone: String? = null,
         )
 
         @JsonClass(generateAdapter = true)
@@ -103,7 +102,7 @@ data class DetailRemoteModel(
             val malId: Int? = null,
             val name: String? = null,
             val type: String? = null,
-            val url: String? = null
+            val url: String? = null,
         )
 
         @JsonClass(generateAdapter = true)
@@ -112,13 +111,13 @@ data class DetailRemoteModel(
             val malId: Int? = null,
             val name: String? = null,
             val type: String? = null,
-            val url: String? = null
+            val url: String? = null,
         )
 
         @JsonClass(generateAdapter = true)
         data class External(
             val name: String? = null,
-            val url: String? = null
+            val url: String? = null,
         )
 
         @JsonClass(generateAdapter = true)
@@ -127,13 +126,13 @@ data class DetailRemoteModel(
             val malId: Int? = null,
             val name: String? = null,
             val type: String? = null,
-            val url: String? = null
+            val url: String? = null,
         )
 
         @JsonClass(generateAdapter = true)
         data class Images(
             val jpg: Jpg? = null,
-            val webp: Webp? = null
+            val webp: Webp? = null,
         ) {
             @JsonClass(generateAdapter = true)
             data class Jpg(
@@ -142,7 +141,7 @@ data class DetailRemoteModel(
                 @Json(name = "large_image_url")
                 val largeImageUrl: String? = null,
                 @Json(name = "small_image_url")
-                val smallImageUrl: String? = null
+                val smallImageUrl: String? = null,
             )
 
             @JsonClass(generateAdapter = true)
@@ -152,7 +151,7 @@ data class DetailRemoteModel(
                 @Json(name = "large_image_url")
                 val largeImageUrl: String? = null,
                 @Json(name = "small_image_url")
-                val smallImageUrl: String? = null
+                val smallImageUrl: String? = null,
             )
         }
 
@@ -162,7 +161,7 @@ data class DetailRemoteModel(
             val malId: Int? = null,
             val name: String? = null,
             val type: String? = null,
-            val url: String? = null
+            val url: String? = null,
         )
 
         @JsonClass(generateAdapter = true)
@@ -171,13 +170,13 @@ data class DetailRemoteModel(
             val malId: Int? = null,
             val name: String? = null,
             val type: String? = null,
-            val url: String? = null
+            val url: String? = null,
         )
 
         @JsonClass(generateAdapter = true)
         data class Relation(
             val entry: List<Entry?>? = null,
-            val relation: String? = null
+            val relation: String? = null,
         ) {
             @JsonClass(generateAdapter = true)
             data class Entry(
@@ -185,14 +184,14 @@ data class DetailRemoteModel(
                 val malId: Int? = null,
                 val name: String? = null,
                 val type: String? = null,
-                val url: String? = null
+                val url: String? = null,
             )
         }
 
         @JsonClass(generateAdapter = true)
         data class Streaming(
             val name: String? = null,
-            val url: String? = null
+            val url: String? = null,
         )
 
         @JsonClass(generateAdapter = true)
@@ -201,13 +200,13 @@ data class DetailRemoteModel(
             val malId: Int? = null,
             val name: String? = null,
             val type: String? = null,
-            val url: String? = null
+            val url: String? = null,
         )
 
         @JsonClass(generateAdapter = true)
         data class Theme(
             val endings: List<String?>? = null,
-            val openings: List<String?>? = null
+            val openings: List<String?>? = null,
         )
 
         @JsonClass(generateAdapter = true)
@@ -216,13 +215,13 @@ data class DetailRemoteModel(
             val malId: Int? = null,
             val name: String? = null,
             val type: String? = null,
-            val url: String? = null
+            val url: String? = null,
         )
 
         @JsonClass(generateAdapter = true)
         data class Title(
             val title: String? = null,
-            val type: String? = null
+            val type: String? = null,
         )
 
         @JsonClass(generateAdapter = true)
@@ -231,7 +230,7 @@ data class DetailRemoteModel(
             val embedUrl: String? = null,
             val url: String? = null,
             @Json(name = "youtube_id")
-            val youtubeId: String? = null
+            val youtubeId: String? = null,
         )
     }
 }

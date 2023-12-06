@@ -30,6 +30,7 @@ import androidx.palette.graphics.Palette
 import coil.compose.AsyncImage
 import github.sachin2dehury.myanimelistcompose.domain.model.PaginatedModel
 import github.sachin2dehury.myanimelistcompose.domain.orZero
+import github.sachin2dehury.myanimelistcompose.presentation.paginated.model.ItemColor
 
 @Composable
 fun PaginatedItem(modifier: Modifier = Modifier, data: PaginatedModel, callback: () -> Unit) {
@@ -64,7 +65,8 @@ fun PaginatedItem(modifier: Modifier = Modifier, data: PaginatedModel, callback:
                 val mutedBgColor = Color(palette.mutedSwatch?.rgb.orZero())
                 val dominantTextColor = Color(palette.dominantSwatch?.bodyTextColor.orZero())
                 val mutedTextColor = Color(palette.mutedSwatch?.bodyTextColor.orZero())
-                itemColor = ItemColor(dominantBgColor, mutedBgColor, dominantTextColor, mutedTextColor)
+                itemColor =
+                    ItemColor(dominantBgColor, mutedBgColor, dominantTextColor, mutedTextColor)
             },
             contentScale = ContentScale.Crop,
         )

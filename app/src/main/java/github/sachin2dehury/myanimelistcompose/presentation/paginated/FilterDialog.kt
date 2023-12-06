@@ -26,19 +26,21 @@ fun FilterDialog(
     selected: String,
     map: Map<String, String?>,
     onDismissCallback: () -> Unit,
-    callback: (String) -> Unit
+    callback: (String) -> Unit,
 ) {
     var expanded by remember {
         mutableStateOf(mExpanded)
     }
-    DropdownMenu(modifier = modifier
-        .clip(RoundedCornerShape(16.dp))
-        .wrapContentSize(),
+    DropdownMenu(
+        modifier = modifier
+            .clip(RoundedCornerShape(16.dp))
+            .wrapContentSize(),
         expanded = expanded,
         onDismissRequest = {
             expanded = false
             onDismissCallback.invoke()
-        }) {
+        },
+    ) {
         map.keys.forEach {
             Row(
                 modifier = Modifier
@@ -48,7 +50,8 @@ fun FilterDialog(
                         expanded = false
                     }
                     .padding(end = 16.dp)
-                    .clip(RoundedCornerShape(16.dp)), verticalAlignment = Alignment.CenterVertically
+                    .clip(RoundedCornerShape(16.dp)),
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 RadioButton(selected = selected == it, onClick = {
                     callback.invoke(it)
