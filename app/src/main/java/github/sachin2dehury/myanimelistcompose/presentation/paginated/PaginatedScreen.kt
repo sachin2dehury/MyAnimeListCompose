@@ -22,6 +22,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
+import github.sachin2dehury.myanimelistcompose.domain.orZero
 import github.sachin2dehury.myanimelistcompose.presentation.ErrorSection
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -30,14 +31,16 @@ import github.sachin2dehury.myanimelistcompose.presentation.ErrorSection
 fun PaginatedScreen(
     modifier: Modifier = Modifier,
     viewModel: PaginatedViewModel = hiltViewModel(),
-    navController: NavHostController
+    navController: NavHostController,
 ) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
-    Scaffold(modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+    Scaffold(
+        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             val query = viewModel.state.collectAsState().value.query.orEmpty()
             SearchSection(query = query, viewModel = viewModel, scrollBehavior = scrollBehavior)
-        }) { paddingValues ->
+        },
+    ) { paddingValues ->
 
         val state = viewModel.state.collectAsState().value
         val pagingState = viewModel.pager.collectAsLazyPagingItems()
@@ -53,7 +56,6 @@ fun PaginatedScreen(
             verticalItemSpacing = 8.dp,
             horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-
             item(span = StaggeredGridItemSpan.FullLine) {
                 if (itemCount > 0) {
                     FilterSection(state = state, viewModel = viewModel)

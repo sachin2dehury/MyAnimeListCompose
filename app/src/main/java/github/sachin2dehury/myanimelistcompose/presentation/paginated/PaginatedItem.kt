@@ -1,7 +1,6 @@
 package github.sachin2dehury.myanimelistcompose.presentation.paginated
 
 import android.graphics.Bitmap
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,6 +20,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
@@ -33,29 +33,22 @@ import github.sachin2dehury.myanimelistcompose.domain.orZero
 
 @Composable
 fun PaginatedItem(modifier: Modifier = Modifier, data: PaginatedModel, callback: () -> Unit) {
-    var dominantBgColor by remember {
-        mutableStateOf(Color.Transparent)
-    }
-    var mutedBgColor by remember {
-        mutableStateOf(Color.Transparent)
-    }
-    var dominantTextColor by remember {
-        mutableStateOf(Color.Transparent)
-    }
-    var mutedTextColor by remember {
-        mutableStateOf(Color.Transparent)
+    var itemColor by remember {
+        mutableStateOf(ItemColor())
     }
     Column(
         modifier = modifier
             .fillMaxSize()
             .clip(RoundedCornerShape(16.dp))
-            .background(mutedBgColor)
+            .drawBehind {
+                drawRect(itemColor.mutedBgColor)
+            }
             .clickable {
                 callback.invoke()
             }
             .padding(8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         AsyncImage(
             model = data.images,
@@ -67,60 +60,63 @@ fun PaginatedItem(modifier: Modifier = Modifier, data: PaginatedModel, callback:
                 val palette =
                     Palette.from(it.result.drawable.toBitmap().copy(Bitmap.Config.ARGB_8888, true))
                         .generate()
-                dominantBgColor = Color(palette.dominantSwatch?.rgb.orZero())
-                mutedBgColor = Color(palette.mutedSwatch?.rgb.orZero())
-                dominantTextColor = Color(palette.dominantSwatch?.bodyTextColor.orZero())
-                mutedTextColor = Color(palette.mutedSwatch?.bodyTextColor.orZero())
+                val dominantBgColor = Color(palette.dominantSwatch?.rgb.orZero())
+                val mutedBgColor = Color(palette.mutedSwatch?.rgb.orZero())
+                val dominantTextColor = Color(palette.dominantSwatch?.bodyTextColor.orZero())
+                val mutedTextColor = Color(palette.mutedSwatch?.bodyTextColor.orZero())
+                itemColor = ItemColor(dominantBgColor, mutedBgColor, dominantTextColor, mutedTextColor)
             },
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Crop,
         )
         Text(
             text = data.titleEnglish.ifEmpty { data.title }.trim(),
             style = MaterialTheme.typography.titleMedium,
-            color = mutedTextColor,
-            textAlign = TextAlign.Center
+            color = itemColor.mutedTextColor,
+            textAlign = TextAlign.Center,
         )
 
         Text(
             modifier = Modifier
-                .background(dominantBgColor),
+                .drawBehind {
+                    drawRect(itemColor.dominantBgColor)
+                },
             text = data.titleJapanese.trim(),
             style = MaterialTheme.typography.titleMedium,
-            color = dominantTextColor,
-            textAlign = TextAlign.Center
+            color = itemColor.dominantTextColor,
+            textAlign = TextAlign.Center,
         )
 
         Row(
             modifier = Modifier
                 .fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Text(
                 text = "Rating: ${data.score}",
                 style = MaterialTheme.typography.labelLarge,
-                color = mutedTextColor
+                color = itemColor.mutedTextColor,
             )
             Text(
                 text = "Rank: ${data.rank}",
                 style = MaterialTheme.typography.labelLarge,
-                color = mutedTextColor
+                color = itemColor.mutedTextColor,
             )
         }
 
         Row(
             modifier = Modifier
                 .fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Text(
                 text = "Episodes: ${data.episodes}",
                 style = MaterialTheme.typography.labelLarge,
-                color = mutedTextColor
+                color = itemColor.mutedTextColor,
             )
             Text(
                 text = data.duration,
                 style = MaterialTheme.typography.labelLarge,
-                color = mutedTextColor
+                color = itemColor.mutedTextColor,
             )
         }
     }
