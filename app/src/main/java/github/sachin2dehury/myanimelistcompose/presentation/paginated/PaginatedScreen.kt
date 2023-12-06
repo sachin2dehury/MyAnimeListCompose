@@ -37,41 +37,50 @@ fun PaginatedScreen(
         topBar = {
             val query = viewModel.state.collectAsState().value.query.orEmpty()
             SearchSection(query = query, viewModel = viewModel, scrollBehavior = scrollBehavior)
-        }) {
+        }) { paddingValues ->
+
         val state = viewModel.state.collectAsState().value
         val pagingState = viewModel.pager.collectAsLazyPagingItems()
         val loadState = pagingState.loadState
-        if (loadState.refresh is LoadState.Loading || loadState.append is LoadState.Loading) {
-            LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
-        }
-        (loadState.refresh as? LoadState.Error)?.let {
-            ErrorSection(error = it.error.localizedMessage ?: "Something went wrong!!") {
-                pagingState.refresh()
-            }
-        }
-        (loadState.append as? LoadState.Error)?.let {
-            ErrorSection(error = it.error.localizedMessage ?: "Something went wrong!!") {
-                pagingState.retry()
-            }
-        }
         val itemCount = pagingState.itemCount
-        if (itemCount > 0) {
-            LazyVerticalStaggeredGrid(
-                modifier = Modifier
-                    .padding(it)
-                    .fillMaxSize(),
-                columns = StaggeredGridCells.Fixed(2),
-                contentPadding = PaddingValues(8.dp),
-                verticalItemSpacing = 8.dp,
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
-                item(span = StaggeredGridItemSpan.FullLine) {
+
+        LazyVerticalStaggeredGrid(
+            modifier = Modifier
+                .padding(paddingValues)
+                .fillMaxSize(),
+            columns = StaggeredGridCells.Fixed(2),
+            contentPadding = PaddingValues(8.dp),
+            verticalItemSpacing = 8.dp,
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+
+            item(span = StaggeredGridItemSpan.FullLine) {
+                if (itemCount > 0) {
                     FilterSection(state = state, viewModel = viewModel)
                 }
-                items(itemCount) {
-                    val item = pagingState[it] ?: return@items
-                    PaginatedItem(data = item) {
-                        navController.navigate("detail/${item.malId}")
+            }
+            items(itemCount) {
+                val item = pagingState[it] ?: return@items
+                PaginatedItem(data = item) {
+                    navController.navigate("detail/${item.malId}")
+                }
+            }
+
+            item(span = StaggeredGridItemSpan.FullLine) {
+                if (loadState.refresh is LoadState.Loading || loadState.append is LoadState.Loading) {
+                    LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
+                }
+            }
+
+            item(span = StaggeredGridItemSpan.FullLine) {
+                (loadState.refresh as? LoadState.Error)?.let {
+                    ErrorSection(error = it.error.localizedMessage ?: "Something went wrong!!") {
+                        pagingState.refresh()
+                    }
+                }
+                (loadState.append as? LoadState.Error)?.let {
+                    ErrorSection(error = it.error.localizedMessage ?: "Something went wrong!!") {
+                        pagingState.retry()
                     }
                 }
             }

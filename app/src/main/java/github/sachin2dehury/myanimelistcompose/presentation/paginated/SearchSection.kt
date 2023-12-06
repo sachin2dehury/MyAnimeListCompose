@@ -37,7 +37,7 @@ fun SearchSection(
                 modifier = Modifier
                     .wrapContentHeight()
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp, vertical = 0.dp),
+                    .padding(horizontal = 16.dp),
                 value = query,
                 textStyle = MaterialTheme.typography.bodyLarge,
                 onValueChange = {
