@@ -1,6 +1,8 @@
 package github.sachin2dehury.myanimelistcompose.presentation.paginated
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -15,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.paging.LoadState
@@ -57,14 +60,17 @@ fun PaginatedScreen(
                 modifier = Modifier
                     .padding(it)
                     .fillMaxSize(),
-                columns = StaggeredGridCells.Fixed(2)
+                columns = StaggeredGridCells.Fixed(2),
+                contentPadding = PaddingValues(8.dp),
+                verticalItemSpacing = 8.dp,
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
                 item(span = StaggeredGridItemSpan.FullLine) {
                     FilterSection(state = state, viewModel = viewModel)
                 }
                 items(itemCount) {
                     val item = pagingState[it] ?: return@items
-                    PaginatedSection(data = item) {
+                    PaginatedItem(data = item) {
                         navController.navigate("detail/${item.malId}")
                     }
                 }
