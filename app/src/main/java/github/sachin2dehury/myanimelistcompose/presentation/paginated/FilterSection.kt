@@ -64,7 +64,6 @@ fun FilterSection(
             }) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(text = state.type)
-
                 Image(imageVector = Icons.Filled.KeyboardArrowDown, contentDescription = "Down")
             }
         }
@@ -93,6 +92,7 @@ fun FilterSection(
             FilterDialog(selected = selected,
                 map = map,
                 onDismissCallback = { dialogType = null }) {
+                dialogType = null
                 when (map) {
                     FilterUiModel.SORTING_BASIS -> viewModel.updateState(
                         viewModel.state.value.copy(
