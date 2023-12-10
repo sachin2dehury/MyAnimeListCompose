@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "MyAnimeListCompose"
 include(":app")
- 
+include(":benchmark")

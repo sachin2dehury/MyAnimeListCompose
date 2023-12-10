@@ -10,13 +10,22 @@
               <deviceKey>
                 <Key>
                   <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="$USER_HOME$/.android/avd/Pixel_2_XL_API_33.avd" />
+                  <value value="$USER_HOME$/.android/avd/Nexus_4_API_25.avd" />
                 </Key>
               </deviceKey>
             </Target>
           </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2023-12-06T06:06:22.292771Z" />
+          <timeTargetWasSelectedWithDropDown value="2023-12-08T11:21:53.707096Z" />
         </State>
+      </entry>
+      <entry key="startup()">
+        <State />
+      </entry>
+      <entry key="startup() (1)">
+        <State />
+      </entry>
+      <entry key="startup() (2)">
+        <State />
       </entry>
     </value>
   </component>
