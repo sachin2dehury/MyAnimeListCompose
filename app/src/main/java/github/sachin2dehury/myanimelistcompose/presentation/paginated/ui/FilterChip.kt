@@ -1,4 +1,4 @@
-package github.sachin2dehury.myanimelistcompose.presentation.paginated
+package github.sachin2dehury.myanimelistcompose.presentation.paginated.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row

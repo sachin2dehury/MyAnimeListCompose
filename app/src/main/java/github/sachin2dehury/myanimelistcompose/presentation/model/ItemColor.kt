@@ -1,4 +1,4 @@
-package github.sachin2dehury.myanimelistcompose.presentation.paginated.model
+package github.sachin2dehury.myanimelistcompose.presentation.model
 
 import androidx.compose.ui.graphics.Color
 

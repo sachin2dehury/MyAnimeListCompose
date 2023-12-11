@@ -1,4 +1,4 @@
-package github.sachin2dehury.myanimelistcompose.presentation.paginated
+package github.sachin2dehury.myanimelistcompose.presentation.paginated.ui
 
 import android.graphics.Bitmap
 import androidx.compose.foundation.clickable
@@ -30,7 +30,7 @@ import androidx.palette.graphics.Palette
 import coil.compose.AsyncImage
 import github.sachin2dehury.myanimelistcompose.domain.model.PaginatedModel
 import github.sachin2dehury.myanimelistcompose.domain.orZero
-import github.sachin2dehury.myanimelistcompose.presentation.paginated.model.ItemColor
+import github.sachin2dehury.myanimelistcompose.presentation.model.ItemColor
 
 @Composable
 fun PaginatedItem(modifier: Modifier = Modifier, data: PaginatedModel, callback: () -> Unit) {
