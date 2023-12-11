@@ -12,9 +12,7 @@ import github.sachin2dehury.myanimelistcompose.data.repository.DetailRepositoryI
 import github.sachin2dehury.myanimelistcompose.data.repository.PaginatedRepository
 import github.sachin2dehury.myanimelistcompose.data.repository.PaginatedRepositoryImpl
 import github.sachin2dehury.myanimelistcompose.domain.usecase.DetailUseCase
-import github.sachin2dehury.myanimelistcompose.domain.usecase.DetailUseCaseImpl
 import github.sachin2dehury.myanimelistcompose.domain.usecase.PaginatedUseCase
-import github.sachin2dehury.myanimelistcompose.domain.usecase.PaginatedUseCaseImpl
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -61,11 +59,9 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providesDetailUseCase(repository: DetailRepository): DetailUseCase =
-        DetailUseCaseImpl(repository)
+    fun providesDetailUseCase(repository: DetailRepository) = DetailUseCase(repository)
 
     @Provides
     @Singleton
-    fun providesPaginatedUseCase(repository: PaginatedRepository): PaginatedUseCase =
-        PaginatedUseCaseImpl(repository)
+    fun providesPaginatedUseCase(repository: PaginatedRepository) = PaginatedUseCase(repository)
 }

@@ -97,4 +97,6 @@ dependencies {
     implementation("androidx.palette:palette-ktx:1.0.0")
 
     implementation("androidx.profileinstaller:profileinstaller:1.3.1")
+
+    testImplementation("com.google.truth:truth:1.1.3")
 }
