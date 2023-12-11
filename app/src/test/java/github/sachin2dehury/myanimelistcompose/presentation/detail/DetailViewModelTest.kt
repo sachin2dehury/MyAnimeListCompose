@@ -1,19 +1,9 @@
 package github.sachin2dehury.myanimelistcompose.presentation.detail
 
-import androidx.compose.ui.res.pluralStringResource
-import com.google.common.truth.Truth.assertThat
 import github.sachin2dehury.myanimelistcompose.data.repository.DetailRepository
 import github.sachin2dehury.myanimelistcompose.data.repository.FakeDetailRepository
 import github.sachin2dehury.myanimelistcompose.domain.usecase.DetailUseCase
-import github.sachin2dehury.myanimelistcompose.presentation.detail.model.DetailUiState
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.toList
-import kotlinx.coroutines.plus
-import kotlinx.coroutines.runBlocking
 import org.junit.Before
-import org.junit.Test
 
 class DetailViewModelTest {
     private lateinit var viewModel: DetailViewModel

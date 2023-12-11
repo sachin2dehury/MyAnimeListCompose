@@ -24,6 +24,7 @@ import androidx.navigation.NavHostController
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import github.sachin2dehury.myanimelistcompose.presentation.ErrorSection
+import kotlinx.coroutines.flow.toList
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
