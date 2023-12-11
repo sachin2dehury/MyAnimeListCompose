@@ -53,12 +53,4 @@ class PaginatedViewModelTest {
         val result = viewModel.state.value
         assertThat(result == PaginatedUiState().copy(type = "foo")).isTrue()
     }
-
-//    @Test
-//    fun `validate paging`() {
-//        runBlocking {
-//            val result = viewModel.pager.toList()
-//            assertThat(result.size > 2).isTrue()
-//        }
-//    }
 }
