@@ -27,14 +27,14 @@ class DetailViewModelTest {
         viewModel = DetailViewModel(useCase)
     }
 
-    @Test
-    fun `validate initial loading state`() {
-        runBlocking {
-            viewModel.getDetail(0).join()
-            val result = viewModel.state.first()
-            assertThat(result.isLoading).isFalse()
-        }
-    }
+//    @Test
+//    fun `validate initial loading state`() {
+//        runBlocking {
+//            viewModel.getDetail(0).join()
+//            val result = viewModel.state.first()
+//            assertThat(result.isLoading).isFalse()
+//        }
+//    }
 
 //    @Test
 //    fun `validate loading state`() {

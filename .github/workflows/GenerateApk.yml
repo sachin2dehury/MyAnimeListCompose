@@ -23,6 +23,9 @@ jobs:
       - name: Set up Gradle with Cache
         uses: gradle/gradle-build-action@v2
 
+      - name: Run Unit Test
+        run: ./gradlew testReleaseUnitTest --scan
+
       - name: Generate Release Apk
         run: ./gradlew assembleRelease --scan
 
