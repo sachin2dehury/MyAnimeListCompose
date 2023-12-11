@@ -9,6 +9,7 @@ import github.sachin2dehury.myanimelistcompose.domain.usecase.PaginatedUseCase
 import github.sachin2dehury.myanimelistcompose.presentation.paginated.model.PaginatedUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.flatMapLatest
 import javax.inject.Inject
 
@@ -20,7 +21,7 @@ class PaginatedViewModel @Inject constructor(useCase: PaginatedUseCase) : ViewMo
     private val _state = MutableStateFlow(PaginatedUiState())
     val state = _state.asStateFlow()
 
-    val pager = _state.flatMapLatest {
+    val pager = _state.debounce(500).flatMapLatest {
         Pager(pagingConfig, 1) {
             AnimePagingSource(useCase, _state.value.toFilterModel())
         }.flow

@@ -40,6 +40,7 @@ class FakeDetailRepository : DetailRepository {
     }
 
     override suspend fun getDetails(id: Int): DetailRemoteModel {
+        delay(1000)
         return models.random()
     }
 }

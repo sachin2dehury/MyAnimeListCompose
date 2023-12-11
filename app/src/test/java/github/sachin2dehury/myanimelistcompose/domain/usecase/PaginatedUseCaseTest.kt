@@ -1,10 +1,9 @@
 package github.sachin2dehury.myanimelistcompose.domain.usecase
 
 import androidx.paging.PagingSource
-import com.google.common.truth.Truth
+import com.google.common.truth.Truth.assertThat
 import github.sachin2dehury.myanimelistcompose.data.repository.FakePaginatedRepository
 import github.sachin2dehury.myanimelistcompose.data.repository.PaginatedRepository
-import github.sachin2dehury.myanimelistcompose.domain.orZero
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
@@ -23,7 +22,7 @@ class PaginatedUseCaseTest {
     fun `validate page result is not invalid`() {
         runBlocking {
             val result = useCase.invoke(0, 1, null, null, null, null)
-            Truth.assertThat(result !is PagingSource.LoadResult.Invalid)
+            assertThat(result is PagingSource.LoadResult.Invalid).isFalse()
         }
     }
 
@@ -33,15 +32,11 @@ class PaginatedUseCaseTest {
             val result = useCase.invoke(0, 1, null, null, null, null)
             when (result) {
                 is PagingSource.LoadResult.Error -> {
-                    Truth.assertThat(!result.throwable.localizedMessage.isNullOrEmpty())
+                    assertThat(result.throwable.localizedMessage.isNullOrEmpty()).isFalse()
                 }
 
-                is PagingSource.LoadResult.Invalid -> {
-                    Truth.assertThat(false)
-                }
-
-                is PagingSource.LoadResult.Page -> {
-                    Truth.assertThat(true)
+                else -> {
+                    assertThat(result is PagingSource.LoadResult.Invalid).isFalse()
                 }
             }
         }
@@ -50,18 +45,13 @@ class PaginatedUseCaseTest {
     @Test
     fun `validate page has no prev key`() {
         runBlocking {
-            val result = useCase.invoke(0, 1, null, null, null, null)
-            when (result) {
-                is PagingSource.LoadResult.Error -> {
-                    Truth.assertThat(true)
-                }
-
-                is PagingSource.LoadResult.Invalid -> {
-                    Truth.assertThat(false)
-                }
-
+            when (val result = useCase.invoke(0, 1, null, null, null, null)) {
                 is PagingSource.LoadResult.Page -> {
-                    Truth.assertThat(result.prevKey == null)
+                    assertThat(result.prevKey == null).isTrue()
+                }
+
+                else -> {
+                    assertThat(result is PagingSource.LoadResult.Invalid).isFalse()
                 }
             }
         }
@@ -70,18 +60,13 @@ class PaginatedUseCaseTest {
     @Test
     fun `validate page has non empty list`() {
         runBlocking {
-            val result = useCase.invoke(0, 1, null, null, null, null)
-            when (result) {
-                is PagingSource.LoadResult.Error -> {
-                    Truth.assertThat(true)
-                }
-
-                is PagingSource.LoadResult.Invalid -> {
-                    Truth.assertThat(false)
-                }
-
+            when (val result = useCase.invoke(0, 1, null, null, null, null)) {
                 is PagingSource.LoadResult.Page -> {
-                    Truth.assertThat(result.data.isNotEmpty())
+                    assertThat(result.data.isNotEmpty()).isTrue()
+                }
+
+                else -> {
+                    assertThat(result is PagingSource.LoadResult.Invalid).isFalse()
                 }
             }
         }
@@ -90,18 +75,12 @@ class PaginatedUseCaseTest {
     @Test
     fun `validate page has next key`() {
         runBlocking {
-            val result = useCase.invoke(0, 1, null, null, null, null)
-            when (result) {
-                is PagingSource.LoadResult.Error -> {
-                    Truth.assertThat(true)
-                }
-
-                is PagingSource.LoadResult.Invalid -> {
-                    Truth.assertThat(false)
-                }
-
+            when (val result = useCase.invoke(0, 1, null, null, null, null)) {
                 is PagingSource.LoadResult.Page -> {
-                    Truth.assertThat(result.nextKey.orZero() > 0)
+                    assertThat(result.nextKey != null).isTrue()
+                }
+                else -> {
+                    assertThat(result is PagingSource.LoadResult.Invalid).isFalse()
                 }
             }
         }
